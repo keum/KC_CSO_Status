@@ -29,6 +29,18 @@ Create a data structure like
 }
 
 
+Another Option for data strcuture for third table: - having Dictionary with list embded since all 
+the data that's coming over will be fixed field data and not mixed
+
+{'Timestamp': '09-25-2013 6:50'
+  'Stations' : {
+                 'ALKI': ('-122.3222',
+                          '47.57000',
+                           'value': 3)
+               }
+
+
+
 """
 # cso_cord is analagous to handle
 cso_cord = open('cso_coord.csv', 'r')
