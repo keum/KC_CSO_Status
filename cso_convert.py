@@ -66,6 +66,8 @@ formatted_data_dict = {'timestamp': '',
                     'stations': {}}
 
 # Populate with staion names and coordinates.
+# Need to convert string X_coord & Y_coord into floating number
+
 for row in location:
     formatted_data_dict['stations'][row['CSO_TagName']] = {'X_COORD': row['X_COORD'],
                                                        'Y_COORD': row['Y_COORD']}
