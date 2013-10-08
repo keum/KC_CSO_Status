@@ -2,6 +2,8 @@ import sys
 import csv
 import urllib2
 import pprint
+import json
+
 """
 Things you need to do next:
 - Convert data types to their proper formats.
@@ -65,6 +67,8 @@ for line in cso_status_csv:
     # If CSO exists, add to it.
     if cso_name in formatted_data_dict['stations']:
         formatted_data_dict['stations'][cso_name]['value'] = cso_value
+
+result = json.dumps(formatted_data_dict)
 
 #print (formatted_data_dict)
 pprint.pprint(formatted_data_dict)
