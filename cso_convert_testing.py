@@ -39,7 +39,7 @@ cso_cord = open('cso_coord.csv', 'r')
 # cso_cord = open(sys.argv[1])
 
 #instead of reading CSV file, it needs to read over CSV from urllib2 method
-print("the real file")
+#print("the real file")
 
 # Downloading csv status values from the web.
 cso_status_data = urllib2.urlopen("http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV")
@@ -52,21 +52,21 @@ location = list (reader)
 cso_cord.close()
 
 # Setup our ending data format
-formatted_data_dict = {'timestamp': '',
-                    'stations': {}}
+formatted_data_dict = {"timestamp": "",
+                    "stations": {}}
 
 # Populate with station names and coordinates.
 for row in location:
-    formatted_data_dict['stations'][row['CSO_TagName']] = {'X_COORD': float(row['X_COORD']),
-                                                       'Y_COORD': float(row['Y_COORD'])}
+    formatted_data_dict["stations"][row["CSO_TagName"]] = {"X_COORD": float(row["X_COORD"]),
+                                                       "Y_COORD": float(row["Y_COORD"])}
 
 # Populate with station values, based on station names.
 for line in cso_status_csv:
     cso_name = line[0][0:len(line[0])-12]
     cso_value = line[1]
     # If CSO exists, add to it.
-    if cso_name in formatted_data_dict['stations']:
-        formatted_data_dict['stations'][cso_name]['value'] = cso_value
+    if cso_name in formatted_data_dict["stations"]:
+        formatted_data_dict["stations"][cso_name]["value"] = cso_value
 
 result = json.dumps(formatted_data_dict)
 
