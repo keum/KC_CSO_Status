@@ -44,7 +44,7 @@ NEED a Data structure template in python to look like this then convert to  GeoJ
 }
 """
 
-cso_cord = open('cso_coord.csv', 'r')
+cso_cord = open('partial_coord.csv', 'r')
 # MK NOTE: Uncomment below, and comment out above to
 # get your command line input back, unless if coordinate data csv data file is in the same directory as
 # where python code is.
@@ -59,9 +59,7 @@ format_dict = {'type':'FeatureCollection",
                 'features': [{'type': 'Features','properties':
                                                 {'CSO_TagName': 'ALKI'},
                                                 'geometries':{'type':'point','coordinates':[-122.322,47.607]}              
-                                                }    
-                            ]   
-                }
+                                                }  ]    }
                 
 keys for this dictionary is ('type' and 'features')
 
@@ -78,16 +76,19 @@ To iterate to add name and coordinates
 #formatted_data_dict = {'timestamp': '',
 #        'stations': {}}
 
-formatted_data_dict = {'type':'FeatureCollection','features': {}}
+formatted_data_dict = {'type':'FeatureCollection','features':
+[{'type':'Features','properties':{},'geometries':{'type':'point','coordinates':[]}}]}   		                       
 #for row in location:
 #    format_dict['features']
 
 
 # Populate with station names and coordinates then converted string into number
-for row in location:
-    formatted_data_dict['features'][row['CSO_TagName']] = {'X_COORD': float(row['X_COORD']),
-                                                       'Y_COORD': float(row['Y_COORD'])}
+#for row in location:
+#  formatted_data_dict['features'][row['CSO_TagName']] = {'type':'Features','properties':{},'geometries':{'coordinates':[(row['X_COORD'])],[(row['Y_COORD'])]}}
 
+print(location)
+result = json.dumps(formatted_data_dict)
+pprint.pprint(result)
 
-pprint.pprint(formatted_data_dict)
+#pprint.pprint(formatted_data_dict)
 

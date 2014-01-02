@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "CSO_TagName": "ALKI",
+        "Value": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38735198974608,
+          47.59273570820418
+        ]
+      }
+    }
+  ]
+}
