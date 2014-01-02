@@ -22,7 +22,9 @@ Status condition
    
 
 3.Join these two tables into one table.
+
 4. Convert this table into geoJSON format. 
+
 5. Push this table into GitHub repositiory
 
 
