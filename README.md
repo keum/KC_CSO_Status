@@ -21,7 +21,7 @@ Status condition
     4 = Blue, Real time data not available
    
 
-3.Join these two tables into one table.
+3. Join these two tables into one table.
 
 4. Convert this table into geoJSON format. 
 
