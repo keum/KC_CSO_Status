@@ -28,5 +28,14 @@ Status condition
 
 * Push this table into GitHub repositiory
 
+File Description:
+
+old_convert.py = very first simple python script to read CSV file from Web site
+
+cso_convert.py = script to download CSV file from the data website and crate data dictionary
+
+partial_code.py = old archieve script trying to convert result from cso_convert.py (data dictionary) into geoJSON format but does not work.
+
+template_json_modify.py = next version of cso_convert.py that reformatted results from cso_convert.py (data dictionay) into geoJSON format successfully. Able to convert into geoJSON format with hardcoded example, need to be replaced with CSV file from the web and combine from data dictionary. 
 
 
