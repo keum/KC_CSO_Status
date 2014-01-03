@@ -9,7 +9,8 @@ Purpose: Map project to display real-time status of KC CSO
 Workflow
 
 1. Created CSO name and location in WGS84 coordinate with longitude and latitude
-Locally created File - cso_coord.csv
+
+Locally created File:- cso_coord.csv
 
 2. Download CSV file that contains CSO status condition and name from this site:
 http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV 
