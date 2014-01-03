@@ -8,10 +8,11 @@ Purpose: Map project to display real-time status of KC CSO
 
 Workflow
 
-1. Created CSO name and location in WGS84 coordinate with longitude and latitude
-Locally created File - cso_coord.csv
+* Created CSO name and location in WGS84 coordinate with longitude and latitude
 
-2. Download CSV file that contains CSO status condition and name from this site:
+Locally created File:- cso_coord.csv
+
+* Download CSV file that contains CSO status condition and name from this site:
 http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV 
 
 Status condition 
@@ -21,11 +22,11 @@ Status condition
     4 = Blue, Real time data not available
    
 
-3. Join these two tables into one table.
+* Join these two tables into one table.
 
-4. Convert this table into geoJSON format. 
+* Convert this table into geoJSON format. 
 
-5. Push this table into GitHub repositiory
+* Push this table into GitHub repositiory
 
 
 
