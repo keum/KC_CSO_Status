@@ -22,9 +22,9 @@ Status condition <br>
     4 = Blue, Real time data not available Hex code = #0000EE<br>
    
 
-* Join these two tables into one table.
+* Join these two tables into one table, create dictionary table in python
 
-* Convert this table into geoJSON format. 
+* Convert this table into geoJSON format and add style according to it's status value
 
 * Push this table into GitHub repositiory
 
