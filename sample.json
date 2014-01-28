@@ -16,7 +16,7 @@
 "type": "Feature", "properties":
 {"Value": 2, "CSO_TagName": "ALSK",
 "marker-size":"small",
-"marker-color":"FFFF00"
+"marker-color":"FFD700"
 }},
 
 {"geometry": {"type": "Point",
