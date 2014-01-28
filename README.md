@@ -16,10 +16,10 @@ Locally created File:- cso_coord.csv
 http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV 
 
 Status condition 
-    1 = Red, CSO discharging now
-    2 = Yellow, CSO discharged in last 48 hrs
-    3 = Green, CSO not discharging
-    4 = Blue, Real time data not available
+    1 = Red, CSO discharging now<br>
+    2 = Yellow, CSO discharged in last 48 hrs<br>
+    3 = Green, CSO not discharging<br>
+    4 = Blue, Real time data not available <br>
    
 
 * Join these two tables into one table.
