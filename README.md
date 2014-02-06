@@ -15,16 +15,16 @@ Locally created File:- cso_coord.csv
 * Download CSV file that contains CSO status condition and name from this site:
 http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV 
 
-Status condition 
-    1 = Red, CSO discharging now
-    2 = Yellow, CSO discharged in last 48 hrs
-    3 = Green, CSO not discharging
-    4 = Blue, Real time data not available
+Status condition <br>
+    1 = Red, CSO discharging now Hex code = #DC143C<br>
+    2 = Yellow, CSO discharged in last 48 hrs Hex code = #FFD700<br>
+    3 = Green, CSO not discharging Hex code = #00CD00<br>
+    4 = Blue, Real time data not available Hex code = #0000EE<br>
    
 
-* Join these two tables into one table.
+* Join these two tables into one table, create dictionary table in python
 
-* Convert this table into geoJSON format. 
+* Convert this table into geoJSON format and add style according to it's status value
 
 * Push this table into GitHub repositiory
 

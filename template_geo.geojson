@@ -5,7 +5,12 @@
       "type": "Feature",
       "properties": {
         "CSO_TagName": "ALKI",
-        "Value": 3
+        "Value":"Not Discharging",
+        "marker-size": "small",
+        
+        "marker-color" : "#00CD00",
+        "fill": "00CD00"
+        
       },
       "geometry": {
         "type": "Point",
