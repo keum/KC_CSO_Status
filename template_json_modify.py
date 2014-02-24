@@ -29,8 +29,8 @@ for row in location:
     # We want to populate this stub, for every row, in the location list
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
-                                          'properties':{'CSO_TagName':row['CSO_TagName'],
-                                                        'Value':0},
+                                          'properties':{'Name':row['CSO_TagName'],
+                                                        'CSO_Status':0},
                                           'geometry':{'type':'Point',
                                                       'coordinates':[float(row["X_COORD"]), float(row["Y_COORD"])]
                                                      }
@@ -45,6 +45,19 @@ for line in cso_status_csv:
     if cso_name in formatted_data_dict["stations"]:
         formatted_data_dict["stations"][cso_name]["value"] = cso_value
 """
+
+for line in cso_status_csv:
+    CSO_TagName = line[0][0:len(line[0])-12]
+    value = line[1]
+    # If CSO exists, add to it.
+    if cso_name in geojson_data_dict["stations"]:
+        geojson_data_dict["stations"][cso_name]["value"] = cso_value
+
+
+
+
+
+
 
 
 

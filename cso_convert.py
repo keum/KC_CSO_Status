@@ -43,7 +43,7 @@ the data that's coming over will be fixed field data and not mixed
 
 """
 # cso_cord is analagous to handle
-cso_cord = open('cso_coord.csv', 'r')
+cso_cord = open('partial_coord.csv', 'r')
 # MK NOTE: Uncomment below, and comment out above to
 # get your command line input back.
 # cso_cord = open(sys.argv[1])
