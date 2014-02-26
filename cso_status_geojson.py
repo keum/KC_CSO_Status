@@ -86,22 +86,38 @@ for row in location:
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
-                                                        'CSO_Status':0},
+                                                        'CSO_Status':0,'marker-color':'#666'},
                                           'geometry':{'type':'Point',
                                                       'coordinates':[float(row["X_COORD"]), float(row["Y_COORD"])]
                                                      }
                                           })
 
 
-  
+#create brand new dictionary style with color according to that status
+# Value 1 = #DC143C Discharging now
+# Value 2 = #FFD700 Discharged last 48 hrs
+# Value 3 = #00CD00 Not Discharging
+# Value 4 = #0000EE No Real Time Data
+""" Not Working below
+style_dict = {"1":{'marker-color':'#fff'},
+              "4":[{'marker-color':'#0000EE'},{'Description':'No Real Time Data'}]}  
+
+"""              
+style_dict = {"1":{'marker-color':'#DC143C'},
+              "2":{'marker-color':'#FFD700'},
+              "3":{'marker-color':'#00CD00'},
+              "4":{'marker-color':'#0000EE'}}
+
 
 #??? - Not sure how to add value to be added onto geojson_data_dict object, replace with 
 ##default vaue of 0........
-"""with help from Paul, 
+"""with help from Paul, paul helped to crated loop to add CSO_Status value
 (geojson_data_dict['features'][0]) is dict
 and print it returns
 {'geometry':{coordinates':[-122.4225,47.57024],'type':Point'},
 'properties':{'CSO_Status':0,'CSO_TagName':'ALKI'},'type':'Feature'}
+
+Replace geojson_data_dict's one of the value with CSO status. Refer to the note.
 
 """
 
@@ -113,10 +129,14 @@ for line in cso_status_csv:
     cso_name = line[0][0:len(line[0])-12]
     CSO_Status = line[1]
     # If CSO exists, add to it.
-    if cso_name in geojson_data_dict['features']:
-        geojson_data_dict['features'][cso_name]['value'] = cso_value
- 
-       
+    #Iterate through 'features' list
+    for element in geojson_data_dict['features']:
+      if cso_name == element['properties']['CSO_TagName']:
+        element['properties']['CSO_Status'] = CSO_Status
+        #element['properties'].append(style_dict[CSO_Status])
+        element['properties']['marker-color']=style_dict[CSO_Status]['marker-color']
+        
+ #write out same element with additional style properties              
 
 formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
