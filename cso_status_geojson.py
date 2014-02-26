@@ -55,8 +55,8 @@ cso_status_csv = csv.reader(text)
 
 
 #Reading CSO with Coordinate in csv file locally and create list, 
-#subtitue with full data later
-cso_cord = open('partial_coord.csv', 'r')
+#subtitue with full data file cso_coord.csv or partial_coord.csv for two point data
+cso_cord = open('cso_coord.csv', 'r')
 reader = csv.DictReader(cso_cord)
 
 location = list (reader)
@@ -135,7 +135,7 @@ for line in cso_status_csv:
         element['properties']['CSO_Status'] = CSO_Status
         #element['properties'].append(style_dict[CSO_Status])
         element['properties']['marker-color']=style_dict[CSO_Status]['marker-color']
-        
+
  #write out same element with additional style properties              
 
 formatted_geojson_data_dict = json.dumps(geojson_data_dict)
