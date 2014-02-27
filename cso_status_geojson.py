@@ -1,4 +1,7 @@
 import sys
+import os
+import subprocess
+import time
 import csv
 import urllib2
 import pprint
@@ -56,7 +59,7 @@ cso_status_csv = csv.reader(text)
 
 #Reading CSO with Coordinate in csv file locally and create list, 
 #subtitue with full data file cso_coord.csv or partial_coord.csv for two point data
-cso_cord = open('cso_coord.csv', 'r')
+cso_cord = open('partial_coord.csv', 'r')
 reader = csv.DictReader(cso_cord)
 
 location = list (reader)
@@ -98,7 +101,7 @@ for row in location:
 # Value 2 = #FFD700 Discharged last 48 hrs
 # Value 3 = #00CD00 Not Discharging
 # Value 4 = #0000EE No Real Time Data
-""" Not Working below
+"""Did Not Work below
 style_dict = {"1":{'marker-color':'#fff'},
               "4":[{'marker-color':'#0000EE'},{'Description':'No Real Time Data'}]}  
 
@@ -121,9 +124,7 @@ Replace geojson_data_dict's one of the value with CSO status. Refer to the note.
 
 """
 
-
-
-# modified to work w/ above code...to   
+ 
 # Populate with station values, based on station names.
 for line in cso_status_csv:
     cso_name = line[0][0:len(line[0])-12]
@@ -141,6 +142,18 @@ for line in cso_status_csv:
 formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
 
+#take formatted_geojson_data_dict file and convert '' string into a file using with open
+with open('/Users/peter/Documents/KC_CSO_Status/test_file.geojson', 'w') as out_file:
+   out_file.write(formatted_geojson_data_dict)
+
+
+#Still need to do
+#using git command to push test_file.geojson onto github
+#using paul's modified code 
+
+#subprocess.call(['git', 'add', test_file.geojson])
+#  subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %H:%M:%S",time.gmtime()) + '"'])
+#  subprocess.call(['git', 'push'])
 
 
 
