@@ -59,7 +59,7 @@ cso_status_csv = csv.reader(text)
 
 #Reading CSO with Coordinate in csv file locally and create list, 
 #subtitue with full data file cso_coord.csv or partial_coord.csv for two point data
-cso_cord = open('partial_coord.csv', 'r')
+cso_cord = open('cso_coord.csv', 'r')
 reader = csv.DictReader(cso_cord)
 
 location = list (reader)
@@ -89,7 +89,8 @@ for row in location:
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
-                                                        'CSO_Status':0,'marker-color':'#666'},
+                                                        'CSO_Status':0,'marker-color':'#666',
+                                                        'description':'No Data Available'},
                                           'geometry':{'type':'Point',
                                                       'coordinates':[float(row["X_COORD"]), float(row["Y_COORD"])]
                                                      }
@@ -101,16 +102,21 @@ for row in location:
 # Value 2 = #FFD700 Discharged last 48 hrs
 # Value 3 = #00CD00 Not Discharging
 # Value 4 = #0000EE No Real Time Data
-"""Did Not Work below
-style_dict = {"1":{'marker-color':'#fff'},
-              "4":[{'marker-color':'#0000EE'},{'Description':'No Real Time Data'}]}  
+#Did Not Work below
+style_dict = {"1":{'marker-color':'#DC143C','description':'Discharge'},
+              "2":{'marker-color':'#FFD700','description':'Discharge 48 hrs'},
+              "3":{'marker-color':'#00CD00','description':'No Discharge'},
+              "4":{'marker-color':'#0000EE','description':'No Real Time Data'}
+
+
+              } 
 
 """              
 style_dict = {"1":{'marker-color':'#DC143C'},
               "2":{'marker-color':'#FFD700'},
               "3":{'marker-color':'#00CD00'},
               "4":{'marker-color':'#0000EE'}}
-
+"""
 
 #??? - Not sure how to add value to be added onto geojson_data_dict object, replace with 
 ##default vaue of 0........
@@ -136,6 +142,7 @@ for line in cso_status_csv:
         element['properties']['CSO_Status'] = CSO_Status
         #element['properties'].append(style_dict[CSO_Status])
         element['properties']['marker-color']=style_dict[CSO_Status]['marker-color']
+        element['properties']['description']=style_dict[CSO_Status]['description']
 
  #write out same element with additional style properties              
 
@@ -143,20 +150,19 @@ formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
 
 #take formatted_geojson_data_dict file and convert '' string into a file using with open
-with open('/Users/peter/Documents/KC_CSO_Status/test_file.geojson', 'w') as out_file:
+out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson'
+
+with open(out_file_fullpath, 'w') as out_file:
    out_file.write(formatted_geojson_data_dict)
 
 
 #Still need to do
-#using git command to push test_file.geojson onto github
-#using paul's modified code 
+#using subprocess module to push revised data to github, took Matt's code and need to modify
 
-#subprocess.call(['git', 'add', test_file.geojson])
-#  subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %H:%M:%S",time.gmtime()) + '"'])
-#  subprocess.call(['git', 'push'])
+#create out_data_parent_path and out_data_path
 
 
-
-
-
+subprocess.call(['git', 'add', out_file_fullpath])
+subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()) + '"'])
+subprocess.call(['git', 'push'])
 
