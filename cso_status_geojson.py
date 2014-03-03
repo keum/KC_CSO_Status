@@ -150,7 +150,7 @@ formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
 
 #take formatted_geojson_data_dict file and convert '' string into a file using with open
-out_file_fullpath ='/Users/keump/Documents/GitHub\KC_CSO_Status/test_file.geojson'
+out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson'
 
 with open(out_file_fullpath, 'w') as out_file:
    out_file.write(formatted_geojson_data_dict)
@@ -163,6 +163,6 @@ with open(out_file_fullpath, 'w') as out_file:
 
 
 subprocess.call(['git', 'add', out_file_fullpath])
-subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()) + '"'])
+subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
 subprocess.call(['git', 'push'])
 
