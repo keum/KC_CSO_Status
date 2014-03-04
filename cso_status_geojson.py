@@ -89,6 +89,7 @@ for row in location:
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
+ #how to write proper syntax                           'TimeStamp':row['3/4/2014 3:50'],
                                                         'CSO_Status':0,'marker-color':'#666',
                                                         'marker-size':'small',
                                                         'description':'No Data Available'},
@@ -152,20 +153,16 @@ formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
 
 #take formatted_geojson_data_dict file and convert '' string into a file using with open down is for windows
-out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file2.geojson'
+out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file3.geojson'
 #out_file_fullpath ='/Users/keump/Documents/KC_CSO_Status/test_file.geojson' for macbook
 
 with open(out_file_fullpath, 'w') as out_file:
    out_file.write(formatted_geojson_data_dict)
 
 
-#Still need to do
-#using subprocess module to push revised data to github, took Matt's code and need to modify
-
-#create out_data_parent_path and out_data_path
-
+#using subprocess module to push the data into GitHub site to be view
 
 #subprocess.call(['git', 'add', out_file_fullpath])
 #subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
-#subprocess.call(['git config --global push.default simple'])
+#subprocess.call(['git', 'push'])
 
