@@ -165,7 +165,7 @@ with open(out_file_fullpath, 'w') as out_file:
 #create out_data_parent_path and out_data_path
 
 
-subprocess.call(['git', 'add', out_file_fullpath])
-subprocess.call(['git', 'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
-subprocess.call(['git', 'push'])
+#subprocess.call(['git', 'add', out_file_fullpath])
+#subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
+#subprocess.call(['git config --global push.default simple'])
 
