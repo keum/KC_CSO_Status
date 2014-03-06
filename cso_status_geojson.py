@@ -150,7 +150,7 @@ formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
 
 #take formatted_geojson_data_dict file and convert '' string into a file using with open
-out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson'
+out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file5_5.geojson'
 
 with open(out_file_fullpath, 'w') as out_file:
    out_file.write(formatted_geojson_data_dict)
