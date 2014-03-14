@@ -90,6 +90,7 @@ for row in location:
     geojson_data_dict['features'].append({'type':'Feature',
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
                                                         'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()),
+                                                        'Location(Lon/Lat)':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
                                                         'marker-size':'small',
                                                         'description':'No Data Available'},
