@@ -89,7 +89,8 @@ for row in location:
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
- #how to write proper syntax                           'TimeStamp':row['3/4/2014 3:50'],
+                                                        'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()),
+                                                        'Location(Lon/Lat)':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
                                                         'marker-size':'small',
                                                         'description':'No Data Available'},
@@ -147,6 +148,7 @@ for line in cso_status_csv:
         element['properties']['marker-size']=style_dict[CSO_Status]['marker-size']
         element['properties']['description']=style_dict[CSO_Status]['description']
 
+
  #write out same element with additional style properties              
 
 formatted_geojson_data_dict = json.dumps(geojson_data_dict)
@@ -157,8 +159,8 @@ pprint.pprint(formatted_geojson_data_dict)
 #out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file5_5.geojson'
 
 #take formatted_geojson_data_dict file and convert '' string into a file using with open down is for windows
-out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson'
-#out_file_fullpath ='/Users/keump/Documents/KC_CSO_Status/test_file.geojson' for macbook
+#out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson'
+out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson' #for macbook
 
 
 with open(out_file_fullpath, 'w') as out_file:
