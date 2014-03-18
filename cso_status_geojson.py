@@ -159,8 +159,8 @@ pprint.pprint(formatted_geojson_data_dict)
 #out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file5_5.geojson'
 
 #take formatted_geojson_data_dict file and convert '' string into a file using with open down is for windows
-#out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson'
-out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson' #for macbook
+out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson' #for windows
+#out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson' #for macbook
 
 
 with open(out_file_fullpath, 'w') as out_file:
