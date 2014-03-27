@@ -174,7 +174,7 @@ with open(out_file_fullpath, 'w') as out_file:
 
 #using subprocess module to push the data into GitHub site to be view
 
-subprocess.call(['git', 'add', out_file_fullpath])
-subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
-subprocess.call(['git', 'push'])
+# subprocess.call(['git', 'add', out_file_fullpath])
+# subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
+# subprocess.call(['git', 'push'])
 
