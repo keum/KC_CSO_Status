@@ -174,7 +174,13 @@ with open(out_file_fullpath, 'w') as out_file:
 
 #using subprocess module to push the data into GitHub site to be view
 
-# subprocess.call(['git', 'add', out_file_fullpath])
-# subprocess.call(['git', 'commit', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
-# subprocess.call(['git', 'push'])
+subprocess.call(['git', '--git-dir', '/Users/keump/Documents/GitHub/data_display' + '/.git',
+                '--work-tree', '/Users/keump/Documents/GitHub/data_display',
+                'add', out_file_fullpath])
+subprocess.call(['git', '--git-dir', '/Users/keump/Documents/GitHub/data_display'  +'/.git',
+                '--work-tree', '/Users/keump/Documents/GitHub/data_display', 
+                'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
+subprocess.call(['git', '--git-dir', '/Users/keump/Documents/GitHub/data_display' + '/.git',
+                '--work-tree', '/Users/keump/Documents/GitHub/data_display',
+                'push'])
 
