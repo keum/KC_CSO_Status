@@ -163,7 +163,8 @@ pprint.pprint(formatted_geojson_data_dict)
 
 #out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson' #for Windows 7
 
-out_file_fullpath = '/Users/keump/Documents/GitHub/data_display/test_file.geojson' #for pulbic repo
+out_file_fullpath = '/Users/keump/Documents/GitHub/data_display/test_file.geojson' # file for pulbic repo
+out_file_fullpath_directory = '/Users/keump/Documents/GitHub/data_display' #directory for public repo
 
 #out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson' #for macbook
 
@@ -174,13 +175,13 @@ with open(out_file_fullpath, 'w') as out_file:
 
 #using subprocess module to push the data into GitHub site to be view
 
-subprocess.call(['git', '--git-dir', '/Users/keump/Documents/GitHub/data_display' + '/.git',
-                '--work-tree', '/Users/keump/Documents/GitHub/data_display',
+subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
+                '--work-tree', out_file_fullpath_directory,
                 'add', out_file_fullpath])
-subprocess.call(['git', '--git-dir', '/Users/keump/Documents/GitHub/data_display'  +'/.git',
-                '--work-tree', '/Users/keump/Documents/GitHub/data_display', 
+subprocess.call(['git', '--git-dir', out_file_fullpath_directory  +'/.git',
+                '--work-tree', out_file_fullpath_directory, 
                 'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
-subprocess.call(['git', '--git-dir', '/Users/keump/Documents/GitHub/data_display' + '/.git',
-                '--work-tree', '/Users/keump/Documents/GitHub/data_display',
+subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
+                '--work-tree', out_file_fullpath_directory,
                 'push'])
 
