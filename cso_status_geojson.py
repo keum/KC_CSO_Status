@@ -89,6 +89,8 @@ for row in location:
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
+                                                        'DSN':row['DSN'],
+                                                        'Name':row['Name'],
                                                         'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()),
                                                         'Location(Lon/Lat)':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
@@ -163,7 +165,7 @@ pprint.pprint(formatted_geojson_data_dict)
 
 #out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson' #for Windows 7
 
-out_file_fullpath = '/Users/keump/Documents/GitHub/data_display/test_file.geojson' # file for pulbic repo
+out_file_fullpath = '/Users/keump/Documents/GitHub/data_display/cso_test_file.geojson' # file for pulbic repo
 out_file_fullpath_directory = '/Users/keump/Documents/GitHub/data_display' #directory for public repo
 
 #out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson' #for macbook
