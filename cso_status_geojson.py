@@ -9,8 +9,8 @@ import json
 
 
 """
-Take status csv file from url and coordinate csv file to create 
-data dictionary format and convert that format into geojson type. 
+Take status csv file from url and coordinate csv file to create
+data dictionary format and convert that format into geojson type.
 This geojson data can then be loaded into GitHub page to view
 using it's mapping component
 
@@ -19,7 +19,7 @@ using it's mapping component
 """
 Input data strcture and output data structure (geojson)
 
-Given remote rows from cso_status_data. Data when downloaded from url 
+Given remote rows from cso_status_data. Data when downloaded from url
 11TH.CSOSTATUS_N,3
 30TH.CSOSTATUS_N,3
 3RD.CSOSTATUS_N,3
@@ -33,7 +33,7 @@ And local coords in the form of
 formatted_geojson_data_dict = {'type':'FeatureCollection','features':
 [{'type':'Feature','properties':{},'geometry':{'type':'Point','coordinates':[]}}]}
 
-NEED a Data structure template in python to look like this then convert to  GeoJSON 
+NEED a Data structure template in python to look like this then convert to  GeoJSON
 
 {'type':'FeatureCollection",
   'features': [{'type': 'Features',
@@ -41,9 +41,9 @@ NEED a Data structure template in python to look like this then convert to  GeoJ
                               'Value': 3},
                 'geometries':{'type':'point',
                 'coordinates':[-122.322,
-                              47.607]}              
-                }    
-               ]   
+                              47.607]}
+                }
+               ]
 }
 
 """
@@ -57,7 +57,7 @@ cso_status_csv = csv.reader(text)
 #pprint.pprint(cso_status_csv)
 
 
-#Reading CSO with Coordinate in csv file locally and create list, 
+#Reading CSO with Coordinate in csv file locally and create list,
 #subtitue with full data file cso_coord.csv or partial_coord.csv for two point data
 cso_cord = open('cso_coord.csv', 'r')
 reader = csv.DictReader(cso_cord)
@@ -74,7 +74,7 @@ formatted_geojson_data_dict = {'type':'FeatureCollection','features':
 [{'type':'Feature','properties':{},'geometry':{'type':'Point','coordinates':[]}}]}
 
 for row in location:
-  formatted_geojson_data_dict['features'][row['CSO_TagName']] = 
+  formatted_geojson_data_dict['features'][row['CSO_TagName']] =
   		{'type':'Feature',
   		'properties':{},
   		'geometry':{'coordinates':[(row['X_COORD'])],[(row['Y_COORD'])]}}
@@ -95,6 +95,7 @@ for row in location:
                                                         'Location(Lon/Lat)':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
                                                         'marker-size':'small',
+                                                        'marker-symbol':'circle',
                                                         'description':'No Data Available'},
                                           'geometry':{'type':'Point',
                                                       'coordinates':[float(row["X_COORD"]), float(row["Y_COORD"])]
@@ -114,16 +115,16 @@ style_dict = {"1":{'marker-color':'#DC143C','marker-size':'small','description':
               "4":{'marker-color':'#0000EE','marker-size':'small','description':'No Real Time Data'}
 
 
-              } 
+              }
 
-"""              
+"""
 style_dict = {"1":{'marker-color':'#DC143C'},
               "2":{'marker-color':'#FFD700'},
               "3":{'marker-color':'#00CD00'},
               "4":{'marker-color':'#0000EE'}}
 """
 
-#??? - Not sure how to add value to be added onto geojson_data_dict object, replace with 
+#??? - Not sure how to add value to be added onto geojson_data_dict object, replace with
 ##default vaue of 0........
 """with help from Paul, paul helped to crated loop to add CSO_Status value
 (geojson_data_dict['features'][0]) is dict
@@ -135,10 +136,17 @@ Replace geojson_data_dict's one of the value with CSO status. Refer to the note.
 
 """
 
- 
+
 # Populate with station values, based on station names.
 for line in cso_status_csv:
-    cso_name = line[0][0:len(line[0])-12]
+    #Test to see record is  Seattle CSO data or not
+    if line[0][0:5]=="NPDES": # this indicates the data is Seattle CSO
+        cso_name = line[0]
+        cso_symbol = "circle"
+    else: #this is not  Seattle CSO
+        cso_name = line[0][0:len(line[0])-12] #this is for king county cso
+        cso_symbol = "marker"
+    #for all records
     CSO_Status = line[1]
     # If CSO exists, add to it.
     #Iterate through 'features' list
@@ -149,9 +157,10 @@ for line in cso_status_csv:
         element['properties']['marker-color']=style_dict[CSO_Status]['marker-color']
         element['properties']['marker-size']=style_dict[CSO_Status]['marker-size']
         element['properties']['description']=style_dict[CSO_Status]['description']
+        #adding new element with symbol specific to seattle and KC
+        element['properties']['marker-symbol']=cso_symbol
 
-
- #write out same element with additional style properties              
+ #write out same element with additional style properties
 
 formatted_geojson_data_dict = json.dumps(geojson_data_dict)
 pprint.pprint(formatted_geojson_data_dict)
@@ -181,7 +190,7 @@ subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 '--work-tree', out_file_fullpath_directory,
                 'add', out_file_fullpath])
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory  +'/.git',
-                '--work-tree', out_file_fullpath_directory, 
+                '--work-tree', out_file_fullpath_directory,
                 'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 '--work-tree', out_file_fullpath_directory,
