@@ -174,9 +174,13 @@ pprint.pprint(formatted_geojson_data_dict)
 
 #out_file_fullpath ='/Users/keump/Documents/GitHub/KC_CSO_Status/test_file.geojson' #for Windows 7
 
-out_file_fullpath = '/Users/keump/Documents/GitHub/data_display/cso_test_file.geojson' # file for pulbic repo
-out_file_fullpath_directory = '/Users/keump/Documents/GitHub/data_display' #directory for public repo
+# file for public repo for Windows machine
+out_file_fullpath = '/Users/keump/Documents/GitHub/data_display/cso_test_file.geojson'
 
+# directory for public repo
+out_file_fullpath_directory = '/Users/keump/Documents/GitHub/data_display'
+
+# file for public repo for OS machine
 #out_file_fullpath ='/Users/peter/Documents/KC_CSO_Status/test_file.geojson' #for macbook
 
 
