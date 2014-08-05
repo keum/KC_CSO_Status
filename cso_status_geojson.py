@@ -109,10 +109,10 @@ for row in location:
 # Value 3 = #00CD00 Not Discharging
 # Value 4 = #0000EE No Real Time Data
 #Did Not Work below
-style_dict = {"1":{'marker-color':'#DC143C','marker-size':'medium','description':'Discharging'},
-              "2":{'marker-color':'#FFD700','marker-size':'medium','description':'Discharge 48 hrs'},
-              "3":{'marker-color':'#00CD00','marker-size':'medium','description':'No Discharge'},
-              "4":{'marker-color':'#0000EE','marker-size':'medium','description':'No Real Time Data'}
+style_dict = {"1":{'marker-color':'#DC143C','marker-size':'small','description':'Discharging'},
+              "2":{'marker-color':'#FFD700','marker-size':'small','description':'Discharge 48 hrs'},
+              "3":{'marker-color':'#00CD00','marker-size':'small','description':'No Discharge'},
+              "4":{'marker-color':'#0000EE','marker-size':'small','description':'No Real Time Data'}
 
 
               }
@@ -145,7 +145,7 @@ for line in cso_status_csv:
         cso_symbol = 'marker'
     else: #this is not  Seattle CSO
         cso_name = line[0][0:len(line[0])-12] #this is for king county cso
-        cso_symbol = 'Triangle solid'
+        cso_symbol = 'Triangle Solid'
     #for all records
     CSO_Status = line[1]
     # If CSO exists, add to it.
