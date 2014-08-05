@@ -145,7 +145,7 @@ for line in cso_status_csv:
         cso_symbol = 'marker'
     else: #this is not  Seattle CSO
         cso_name = line[0][0:len(line[0])-12] #this is for king county cso
-        cso_symbol = 'star'
+        cso_symbol = 'square'
     #for all records
     CSO_Status = line[1]
     # If CSO exists, add to it.
