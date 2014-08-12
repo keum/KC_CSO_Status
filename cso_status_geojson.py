@@ -17,17 +17,17 @@ using it's mapping component
 """
 
 """
-Input data strcture and output data structure (geojson)
+Input data in csv strcture and output data structure in geojson format.
 
-Given remote rows from cso_status_data. Data when downloaded from url
+Given remote rows from cso_status_data. Data when downloaded from FTP url site.
+Example Data:
 11TH.CSOSTATUS_N,3
 30TH.CSOSTATUS_N,3
 3RD.CSOSTATUS_N,3
 
-And local coords in the form of
-[{'CSO_TagName': 'ALKI', 'X_COORD': '-122.4225', 'Y_COORD': '47.57024'},
- {'CSO_TagName': 'ALSK', 'X_COORD': '-122.40695', 'Y_COORD': '47.55944'},
- {'CSO_TagName': 'MURR', 'X_COORD': '-122.4', 'Y_COORD': '47.54028'},...]
+And cso_coord.csv in the form of
+[{'CSO_TagName': 'ALKI', 'X_COORD': '-122.4225', 'Y_COORD': '47.57024', 'Name':'Alki, 'DSN':'051'},
+ {.......}]
 
 
 formatted_geojson_data_dict = {'type':'FeatureCollection','features':
@@ -52,8 +52,8 @@ NEED a Data structure template in python to look like this then convert to  GeoJ
 cso_status_data = urllib2.urlopen("http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV")
 
 # Read csv file into a python list name cso_status_csv
-text = cso_status_data.readlines()
-cso_status_csv = csv.reader(text)
+text = cso_status_data.readlines()  #reading each line of downloaded csv file
+cso_status_csv = csv.reader(text)   #creating new object call cso_status_csv from CSV file from url
 #pprint.pprint(cso_status_csv)
 
 
@@ -108,7 +108,7 @@ for row in location:
 # Value 2 = #FFD700 Discharged last 48 hrs
 # Value 3 = #00CD00 Not Discharging
 # Value 4 = #0000EE No Real Time Data
-#Did Not Work below
+
 style_dict = {"1":{'marker-color':'#DC143C','marker-size':'small','description':'Discharging'},
               "2":{'marker-color':'#FFD700','marker-size':'small','description':'Discharge 48 hrs'},
               "3":{'marker-color':'#00CD00','marker-size':'small','description':'No Discharge'},
@@ -126,7 +126,7 @@ style_dict = {"1":{'marker-color':'#DC143C'},
 
 #??? - Not sure how to add value to be added onto geojson_data_dict object, replace with
 ##default vaue of 0........
-"""with help from Paul, paul helped to crated loop to add CSO_Status value
+"""Paul M. helped to crated loop to add CSO_Status value
 (geojson_data_dict['features'][0]) is dict
 and print it returns
 {'geometry':{coordinates':[-122.4225,47.57024],'type':Point'},
@@ -139,12 +139,12 @@ Replace geojson_data_dict's one of the value with CSO status. Refer to the note.
 
 # Populate with station values, based on station names.
 for line in cso_status_csv:
-    #Test to see record is  Seattle CSO data or not
+    #Test to see record is in Seattle CSO data or not
     if line[0][0:5]=="NPDES": # this indicates the data is Seattle CSO
         cso_name = line[0]
         cso_symbol = 'marker'
-    else: #this is not  Seattle CSO
-        cso_name = line[0][0:len(line[0])-12] #this is for king county cso
+    else: #this is not Seattle CSO and is for King County CSO
+        cso_name = line[0][0:len(line[0])-12]
         cso_symbol = 'square'
     #for all records
     CSO_Status = line[1]
