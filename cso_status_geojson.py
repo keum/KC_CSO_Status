@@ -195,7 +195,7 @@ subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 'add', out_file_fullpath])
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory  +'/.git',
                 '--work-tree', out_file_fullpath_directory,
-                'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()) + '"'])
+                'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S %P", time.localtime()) + '"'])
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 '--work-tree', out_file_fullpath_directory,
                 'push'])
