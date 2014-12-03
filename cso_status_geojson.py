@@ -91,7 +91,7 @@ for row in location:
                                           'properties':{'CSO_TagName':row['CSO_TagName'],
                                                         'DSN':row['DSN'],
                                                         'Name':row['Name'],
-                                                        'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S", time.localtime()),
+                                                        'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S %p", time.localtime()),
                                                         'Location(Lon/Lat)':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
                                                         'marker-size':'small',
@@ -195,7 +195,7 @@ subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 'add', out_file_fullpath])
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory  +'/.git',
                 '--work-tree', out_file_fullpath_directory,
-                'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S %P", time.localtime()) + '"'])
+                'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S %p", time.localtime()) + '"'])
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 '--work-tree', out_file_fullpath_directory,
                 'push'])
