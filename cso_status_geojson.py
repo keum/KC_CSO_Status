@@ -142,10 +142,10 @@ for line in cso_status_csv:
     #Test to see record is in Seattle CSO data or not
     if line[0][0:5]=="NPDES": # this indicates the data is Seattle CSO
         cso_name = line[0]
-        cso_symbol = 'marker'
+        cso_symbol = 'x' #indicate Seattle CSO
     else: #this is not Seattle CSO and is for King County CSO
         cso_name = line[0][0:len(line[0])-12]
-        cso_symbol = 'square'
+        cso_symbol = 'circle' # this indicates KC CSO
     #for all records
     CSO_Status = line[1]
     # If CSO exists, add to it.
