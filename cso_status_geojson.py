@@ -92,7 +92,7 @@ for row in location:
                                                         'DSN':row['DSN'],
                                                         'Name':row['Name'],
                                                         'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S %p", time.localtime()),
-                                                        'Location(Lon/Lat)':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
+                                                        'Location':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
                                                         'marker-size':'small',
                                                         'marker-symbol':'circle',
