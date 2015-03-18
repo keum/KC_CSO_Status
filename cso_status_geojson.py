@@ -1,5 +1,5 @@
-import sys
-import os
+#peter remove, not used# import sys
+#peter remove, not used# import os
 import subprocess
 import time
 import csv
@@ -51,10 +51,10 @@ NEED a Data structure template in python to look like this then convert to  GeoJ
 # Downloading csv status values from the web, ftp site.
 cso_status_data = urllib2.urlopen("http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV")
 
-# Read csv file into a python list name cso_status_csv
+# Read csv file into a python list named cso_status_csv
 text = cso_status_data.readlines()  #reading each line of downloaded csv file
 cso_status_csv = csv.reader(text)   #creating new object call cso_status_csv from CSV file from url
-#pprint.pprint(cso_status_csv)
+#debug# pprint.pprint(cso_status_csv)
 
 
 #Reading CSO with Coordinate in csv file locally and create list,
@@ -64,7 +64,7 @@ reader = csv.DictReader(cso_cord)
 
 location = list (reader)
 cso_cord.close()
-#pprint.pprint(location)
+#debug# pprint.pprint(location)
 
 
 """this the format we want to output
@@ -116,13 +116,6 @@ style_dict = {"1":{'marker-color':'#DC143C','marker-size':'small','description':
 
 
               }
-
-"""
-style_dict = {"1":{'marker-color':'#DC143C'},
-              "2":{'marker-color':'#FFD700'},
-              "3":{'marker-color':'#00CD00'},
-              "4":{'marker-color':'#0000EE'}}
-"""
 
 #??? - Not sure how to add value to be added onto geojson_data_dict object, replace with
 ##default vaue of 0........
