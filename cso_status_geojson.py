@@ -85,7 +85,7 @@ geojson_data_dict = {'type':'FeatureCollection','features':[]}
 
 
 for row in location:
-    print type(row["X_COORD"])
+    # debug print type(row["X_COORD"])
     # We want to populate this stub, for every row, in the location list
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
@@ -146,7 +146,7 @@ for line in cso_status_csv:
         element['properties']['marker-size']=style_dict[CSO_Status]['marker-size']
         element['properties']['description']=style_dict[CSO_Status]['description']
         #adding new element with symbol specific to seattle and KC
-        #element['properties']['marker-symbol']=cso_symbol
+        element['properties']['marker-symbol']=style_dict[CSO_Status]['marker-symbol']
 
  #write out same element with additional style properties
 
