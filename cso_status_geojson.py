@@ -94,8 +94,6 @@ for row in location:
                                                         'Time_stamp':time.strftime("%Y-%m-%d %I:%M:%S %p", time.localtime()),
                                                         'Location':"%1.3f , %1.3f" % (float(row["X_COORD"]) ,float(row["Y_COORD"])),
                                                         'CSO_Status':0,'marker-color':'#666',
-                                                        'marker-size':'small',
-                                                        'marker-symbol':'circle',
                                                         'description':'No Data Available'},
                                           'geometry':{'type':'Point',
                                                       'coordinates':[float(row["X_COORD"]), float(row["Y_COORD"])]
@@ -104,15 +102,11 @@ for row in location:
 
 
 #create brand new dictionary style with color according to that status
-# Value 1 = #DC143C Discharging now
-# Value 2 = #FFD700 Discharged last 48 hrs
-# Value 3 = #00CD00 Not Discharging
-# Value 4 = #0000EE No Real Time Data
 
-style_dict = {"1":{'marker-color':'#DC143C','marker-size':'small','description':'Discharging'},
-              "2":{'marker-color':'#FFD700','marker-size':'small','description':'Discharge 48 hrs'},
-              "3":{'marker-color':'#00CD00','marker-size':'small','description':'No Discharge'},
-              "4":{'marker-color':'#0000EE','marker-size':'small','description':'No Real Time Data'}
+style_dict = {"1":{'marker-color':'#FF3030','marker-symbol':'square','marker-size':'large','description':'Overflowing now'},
+              "2":{'marker-color':'#FFD700','marker-symbol':'triangle','marker-size':'medium','description':'Overflowed in the last 48 hrs'},
+              "3":{'marker-color':'#90EE90','marker-symbol':'circle','marker-size':'small','description':'No recent overflow'},
+              "4":{'marker-color':'#C1C1C1','marker-symbol':'cross','marker-size':'small','description':'Data not available'}
 
 
               }
@@ -135,10 +129,10 @@ for line in cso_status_csv:
     #Test to see record is in Seattle CSO data or not
     if line[0][0:5]=="NPDES": # this indicates the data is Seattle CSO
         cso_name = line[0]
-        cso_symbol = 'x' #indicate Seattle CSO
+        #cso_symbol = 'x' #indicate Seattle CSO
     else: #this is not Seattle CSO and is for King County CSO
         cso_name = line[0][0:len(line[0])-12]
-        cso_symbol = 'circle' # this indicates KC CSO
+        #cso_symbol = 'circle' # this indicates KC CSO
     #for all records
     CSO_Status = line[1]
     # If CSO exists, add to it.
