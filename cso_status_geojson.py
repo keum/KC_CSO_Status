@@ -85,6 +85,7 @@ geojson_data_dict = {'type':'FeatureCollection','features':[]}
 
 
 for row in location:
+    print type(row["X_COORD"])
     # We want to populate this stub, for every row, in the location list
     # {'type':'Features','properties':{},'geometry':{'type':'Point','coordinates':[]}}
     geojson_data_dict['features'].append({'type':'Feature',
