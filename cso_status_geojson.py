@@ -106,7 +106,7 @@ for row in location:
 
 style_dict = {"1":{'marker-color':'#FF3030','marker-symbol':'square','marker-size':'large','description':'Overflowing now'},
               "2":{'marker-color':'#FFD700','marker-symbol':'triangle','marker-size':'medium','description':'Overflowed in the last 48 hrs'},
-              "3":{'marker-color':'#8FBC8F','marker-symbol':'circle','marker-size':'small','description':'No recent overflow'},
+              "3":{'marker-color':'#EED8AE','marker-symbol':'circle','marker-size':'small','description':'No recent overflow'},
               "4":{'marker-color':'#C1C1C1','marker-symbol':'cross','marker-size':'small','description':'Data not available'}
 
 
