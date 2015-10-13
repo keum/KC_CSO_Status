@@ -146,7 +146,7 @@ for line in cso_status_csv:
         element['properties']['marker-size']=style_dict[CSO_Status]['marker-size']
         element['properties']['description']=style_dict[CSO_Status]['description']
         #adding new element with symbol specific to seattle and KC
-        element['properties']['marker-symbol']=cso_symbol
+        #element['properties']['marker-symbol']=cso_symbol
 
  #write out same element with additional style properties
 
