@@ -104,7 +104,7 @@ for row in location:
 
 #create brand new dictionary style with color according to that status
 
-style_dict = {"1":{'marker-color':'#FF3030','marker-symbol':'square','marker-size':'large','description':'Overflowing now'},
+style_dict = {"1":{'marker-color':'#DD7E6B','marker-symbol':'square','marker-size':'large','description':'Overflowing now'},
               "2":{'marker-color':'#FFD700','marker-symbol':'triangle','marker-size':'medium','description':'Overflowed in the last 48 hrs'},
               "3":{'marker-color':'#689F38','marker-symbol':'circle','marker-size':'small','description':'No recent overflow'},
               "4":{'marker-color':'#C1C1C1','marker-symbol':'cross','marker-size':'small','description':'Data not available'}
