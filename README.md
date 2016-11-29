@@ -3,17 +3,17 @@ KC_CSO_Status
 
 Summary:
 
-Starting with King County Combined Sewer Overflow (CSO) status data publicly available from the web, join to a CSV table that contains longitude/latitude coordinates. Export the joined data as text in the geojson format, and post the data to GitHub. The data can be viewed on a basemap directly on GitHub. Additionaly the geojson file is made available using GitHub GH-Pages functionality to be consumed by JavaScript based web pages.
+Starting with publicly available King County and City of Seattle's Combined Sewer Overflow (CSO) status data publicly from the web, then join this data to a CSV table that contains longitude/latitude coordinates. Export the joined data as text in the geojson format, and post the data to GitHub. The data can be viewed on a basemap directly on GitHub. Additionaly the geojson file is made available using GitHub GH-Pages functionality to be consumed by JavaScript based web pages.
 
 Purpose:
 
-Provide a web map that displays the real-time status of King County CSO sites.
+Provide a web map that displays the real-time status of King County and City of Seattle's CSO sites.
 
 Data Resources:
 
 cso_coord.csv - A file located in this respository that contains a WGS84 coordinate pair, a site name, and a DSN for each of the CSO sites.
 
-http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV - publicly available data that contains a status condition and name for each of the CSO sites.
+http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV - publicly available data that contains a status condition and name for each of the CSO sites (King County and City of Seattle).
 
 Lookup tables for tatus conditions (currently hard coded in python script) <br>
     1 = Red, CSO discharging now Hex code = #DC143C<br>
